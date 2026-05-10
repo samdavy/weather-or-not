@@ -20,11 +20,10 @@ LOCATION         = os.environ.get("LOCATION_NAME", "Draper, UT")
 MODEL = "anthropic/claude-sonnet-4.6"
 
 SYSTEM_PROMPT = """\
-You are a terse, slightly world-weary weather observer. You report conditions \
-factually but can't help editorializing a little — a dry observation about \
-what the weather implies for the day, occasionally fatalistic, never cheerful \
-in a forced way. One to three sentences max. No emojis unless ironic. \
-You are not an assistant, you are just... reporting.\
+You are a terse, slightly world-weary weather observer. Given current conditions, \
+tell the person what to wear today — be specific and practical (jacket, layers, sunscreen, umbrella, etc). \
+Lead with the outfit verdict, then one dry observation about the day. \
+Two to three sentences max. No emojis unless ironic. Never cheerful in a forced way.\
 """
 
 WMO_CODES = {
@@ -46,8 +45,9 @@ def get_weather() -> dict:
         f"?latitude={LAT}&longitude={LON}"
         f"&current=temperature_2m,apparent_temperature,weathercode,"
         f"windspeed_10m,relativehumidity_2m,precipitation"
-        f"&daily=temperature_2m_max,temperature_2m_min,precipitation_sum"
-        f"&temperature_unit=celsius&windspeed_unit=kmh&timezone=auto"
+        f"&daily=temperature_2m_max,temperature_2m_min,"
+        f"precipitation_probability_max,precipitation_sum,uv_index_max"
+        f"&temperature_unit=fahrenheit&windspeed_unit=mph&timezone=auto"
         f"&forecast_days=1"
     )
     r = httpx.get(url, timeout=10)
@@ -62,12 +62,13 @@ def format_weather_for_llm(data: dict) -> str:
     return (
         f"Location: {LOCATION}\n"
         f"Condition: {condition}\n"
-        f"Temperature: {c['temperature_2m']}°C (feels like {c['apparent_temperature']}°C)\n"
-        f"Today's range: {d['temperature_2m_min'][0]}°C – {d['temperature_2m_max'][0]}°C\n"
-        f"Humidity: {c['relativehumidity_2m']}%\n"
-        f"Wind: {c['windspeed_10m']} km/h\n"
-        f"Precipitation now: {c['precipitation']} mm "
-        f"(daily total forecast: {d['precipitation_sum'][0]} mm)"
+        f"Temperature: {c['temperature_2m']}°F (feels like {c['apparent_temperature']}°F)\n"
+        f"Today's range: {d['temperature_2m_min'][0]}°F – {d['temperature_2m_max'][0]}°F\n"
+        f"Rain chance: {d['precipitation_probability_max'][0]}%\n"
+        f"Precipitation: {d['precipitation_sum'][0]} mm expected today\n"
+        f"UV index: {d['uv_index_max'][0]}\n"
+        f"Wind: {c['windspeed_10m']} mph\n"
+        f"Humidity: {c['relativehumidity_2m']}%"
     )
 
 # ── LLM ───────────────────────────────────────────────────────────────────────
@@ -81,7 +82,7 @@ def ask_claude(weather_text: str) -> str:
         },
         json={
             "model": MODEL,
-            "max_tokens": 120,
+            "max_tokens": 150,
             "messages": [
                 {"role": "system", "content": SYSTEM_PROMPT},
                 {"role": "user", "content": weather_text},
@@ -112,13 +113,12 @@ def main():
         sys.exit(1)
 
     weather_text = format_weather_for_llm(weather_data)
-    print("Weather data:\n" + weather_text)  # logged in GH Actions
+    print("Weather data:\n" + weather_text)
 
     try:
         message = ask_claude(weather_text)
     except Exception as e:
         print(f"Claude call failed: {e}", file=sys.stderr)
-        # fallback: send raw data
         message = weather_text
 
     print("Sending:", message)
