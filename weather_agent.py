@@ -99,11 +99,11 @@ def format_weather_report(data: dict) -> str:
     code = c.get("weathercode", 0)
     condition = WMO_CODES.get(code, f"code {code}")
     return (
-        f"Current Temperature: {round(c['temperature_2m'])}F\n"
+        f"Current Temperature: {round(c['temperature_2m'])}°F\n"
         f"Current Humidity: {round(c['relativehumidity_2m'])}%\n"
         f"Conditions: {condition.title()}\n"
-        f"Day High: {round(d['temperature_2m_max'][0])}F\n"
-        f"Day Low: {round(d['temperature_2m_min'][0])}F\n"
+        f"Day High: {round(d['temperature_2m_max'][0])}°F\n"
+        f"Day Low: {round(d['temperature_2m_min'][0])}°F\n"
         f"Viable Clothing: {get_viable_clothing(c['temperature_2m'], condition)}\n"
         f"Fictional Analog: {get_fictional_analog(code)}"
     )
