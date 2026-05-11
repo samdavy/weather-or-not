@@ -1,0 +1,1016 @@
+{
+  "_meta": {
+    "version": "2.0",
+    "description": "Fictional settings mapped to WMO weather codes for Open-Meteo weather bots",
+    "source_api": "Open-Meteo — field: current.weather_code",
+    "wmo_reference": "https://open-meteo.com/en/docs#weathervariables",
+    "fields": {
+      "setting": "Name of the fictional world/location",
+      "source": "Franchise or work of origin",
+      "source_type": "sci-fi | fantasy | video-game | tabletop | anime | film | literature | mixed",
+      "location": "Specific in-world location name",
+      "flavor": "Short atmospheric description for bot message (1-2 sentences)",
+      "tone": "bleak | cozy | epic | eerie | whimsical | tense | serene | oppressive",
+      "temp_bias": "hot | warm | neutral | cool | cold | freezing — cross-reference with temperature_2m",
+      "tags": "additional descriptors for filtering"
+    },
+    "wmo_groups": {
+      "0": "Clear sky",
+      "1": "Mainly clear",
+      "2": "Partly cloudy",
+      "3": "Overcast",
+      "45": "Fog",
+      "48": "Icy fog",
+      "51": "Light drizzle",
+      "53": "Moderate drizzle",
+      "55": "Dense drizzle",
+      "56": "Light freezing drizzle",
+      "57": "Heavy freezing drizzle",
+      "61": "Slight rain",
+      "63": "Moderate rain",
+      "65": "Heavy rain",
+      "66": "Light freezing rain",
+      "67": "Heavy freezing rain",
+      "71": "Slight snow",
+      "73": "Moderate snow",
+      "75": "Heavy snow",
+      "77": "Snow grains",
+      "80": "Slight rain showers",
+      "81": "Moderate rain showers",
+      "82": "Violent rain showers",
+      "85": "Slight snow showers",
+      "86": "Heavy snow showers",
+      "95": "Thunderstorm",
+      "96": "Thunderstorm with slight hail",
+      "99": "Thunderstorm with heavy hail"
+    }
+  },
+
+  "0": {
+    "label": "Clear sky",
+    "settings": [
+      {
+        "setting": "Reach",
+        "source": "Halo",
+        "source_type": "video-game",
+        "location": "Eposz highlands before the Covenant invasion",
+        "flavor": "The sky over Eposz is an impossible blue, twin contrails of a Pelican fading into the distance. Enjoy the calm — it won't last.",
+        "tone": "tense",
+        "temp_bias": "warm",
+        "tags": ["military sci-fi", "pre-apocalypse", "open world"]
+      },
+      {
+        "setting": "The Plains of Rohan",
+        "source": "Lord of the Rings",
+        "source_type": "fantasy",
+        "location": "Near Edoras",
+        "flavor": "Golden grass rolls to the horizon under a vast, cloudless sky. The mearas run today.",
+        "tone": "epic",
+        "temp_bias": "warm",
+        "tags": ["tolkien", "open plain", "horse lords"]
+      },
+      {
+        "setting": "Tatooine",
+        "source": "Star Wars",
+        "source_type": "sci-fi",
+        "location": "Outer Rim desert world",
+        "flavor": "Both suns blaze overhead, the twin shadows shortened to nothing. The Wastes shimmer. Stay hydrated.",
+        "tone": "oppressive",
+        "temp_bias": "hot",
+        "tags": ["desert", "binary star", "open sky"]
+      },
+      {
+        "setting": "Hyrule Field",
+        "source": "The Legend of Zelda",
+        "source_type": "video-game",
+        "location": "Central Hyrule",
+        "flavor": "The field stretches wide under a warm golden sky. Somewhere, a fairy is waiting in a fountain.",
+        "tone": "whimsical",
+        "temp_bias": "warm",
+        "tags": ["adventure", "open world", "classic"]
+      },
+      {
+        "setting": "Cloud City",
+        "source": "Star Wars",
+        "source_type": "sci-fi",
+        "location": "Bespin upper atmosphere",
+        "flavor": "The tibanna gas clouds part. Bespin's perpetual orange-gold fills the sky — a perfect day on the floating city, if you trust your host.",
+        "tone": "tense",
+        "temp_bias": "warm",
+        "tags": ["floating city", "atmospheric", "beautiful but dangerous"]
+      }
+    ]
+  },
+
+  "1": {
+    "label": "Mainly clear",
+    "settings": [
+      {
+        "setting": "Coruscant Senate District",
+        "source": "Star Wars",
+        "source_type": "sci-fi",
+        "location": "Level 5000, Senate Plaza",
+        "flavor": "Rare clear-atmosphere day on Coruscant. Skylanes are busy. The Senate dome catches the light like a bronze disc.",
+        "tone": "serene",
+        "temp_bias": "neutral",
+        "tags": ["urban planet", "political", "rare event"]
+      },
+      {
+        "setting": "The Shivering Isles",
+        "source": "The Elder Scrolls IV: Oblivion",
+        "source_type": "video-game",
+        "location": "Mania region",
+        "flavor": "Vivid, unreal sunshine illuminates the golden bliss of Mania. The colours are too bright. You feel watched.",
+        "tone": "eerie",
+        "temp_bias": "warm",
+        "tags": ["oblivion", "daedric", "surreal"]
+      },
+      {
+        "setting": "Hive City Upper Spire",
+        "source": "Warhammer 40,000",
+        "source_type": "tabletop",
+        "location": "Hive Primus, Necromunda",
+        "flavor": "The smog layer sits below today. From the upper spire you can almost remember what sunlight was supposed to feel like.",
+        "tone": "bleak",
+        "temp_bias": "warm",
+        "tags": ["grimdark", "urban", "rare clarity"]
+      },
+      {
+        "setting": "Liyue Harbor",
+        "source": "Genshin Impact",
+        "source_type": "video-game",
+        "location": "Liyue Harbor docks at dawn",
+        "flavor": "Pale morning light on the harbor stone, the smell of spices from early stalls, lanterns still burning in the clearing sky.",
+        "tone": "serene",
+        "temp_bias": "warm",
+        "tags": ["fantasy", "trading city", "peaceful"]
+      }
+    ]
+  },
+
+  "2": {
+    "label": "Partly cloudy",
+    "settings": [
+      {
+        "setting": "Faerun",
+        "source": "Dungeons & Dragons / Forgotten Realms",
+        "source_type": "tabletop",
+        "location": "Sword Coast, north of Baldur's Gate",
+        "flavor": "Broken clouds over the Sword Coast. The kind of weather that makes bards write wistful songs and innkeepers rub their hands.",
+        "tone": "cozy",
+        "temp_bias": "cool",
+        "tags": ["D&D", "fantasy", "northern coast"]
+      },
+      {
+        "setting": "The Undying Lands",
+        "source": "Lord of the Rings / Silmarillion",
+        "source_type": "fantasy",
+        "location": "Western shores of Valinor",
+        "flavor": "Silver clouds gather at the horizon where the world curves away. Even the overcast here feels sacred.",
+        "tone": "serene",
+        "temp_bias": "cool",
+        "tags": ["tolkien", "mythic", "melancholy beautiful"]
+      },
+      {
+        "setting": "Rannoch",
+        "source": "Mass Effect 3",
+        "source_type": "sci-fi",
+        "location": "Rannoch desert lowlands",
+        "flavor": "Patches of open sky over liberated Rannoch. The quarians don't open their helmets, but a few reach out toward the light.",
+        "tone": "epic",
+        "temp_bias": "warm",
+        "tags": ["mass effect", "reclamation", "bittersweet"]
+      }
+    ]
+  },
+
+  "3": {
+    "label": "Overcast",
+    "settings": [
+      {
+        "setting": "Midgar",
+        "source": "Final Fantasy VII",
+        "source_type": "video-game",
+        "location": "Upper plate, Sector 1",
+        "flavor": "The plate diffuses what little sky is visible. A grey ceiling over a grey city. Somewhere below, Sector 7 is still breathing.",
+        "tone": "bleak",
+        "temp_bias": "cool",
+        "tags": ["dystopia", "industrial", "urban decay"]
+      },
+      {
+        "setting": "Mordor borderlands",
+        "source": "Lord of the Rings",
+        "source_type": "fantasy",
+        "location": "The Plateau of Gorgoroth",
+        "flavor": "Ash clouds roll in from the north. The Eye of Sauron is distant today, but never absent.",
+        "tone": "oppressive",
+        "temp_bias": "hot",
+        "tags": ["tolkien", "volcanic", "evil stronghold"]
+      },
+      {
+        "setting": "Night City",
+        "source": "Cyberpunk 2077",
+        "source_type": "video-game",
+        "location": "Watson district",
+        "flavor": "The neon bleeds upward into a flat grey sky. Perfect megacorp weather — nothing to see, nowhere to go, plenty to buy.",
+        "tone": "bleak",
+        "temp_bias": "cool",
+        "tags": ["cyberpunk", "urban", "corporate dystopia"]
+      },
+      {
+        "setting": "Noveria",
+        "source": "Mass Effect",
+        "source_type": "sci-fi",
+        "location": "Port Hanshan perimeter",
+        "flavor": "Dense cloud cover rolls in off the ice shelf. The corporate towers vanish into grey. Routine condition for Noveria — nothing is routine on Noveria.",
+        "tone": "tense",
+        "temp_bias": "cold",
+        "tags": ["mass effect", "arctic planet", "corporate intrigue"]
+      },
+      {
+        "setting": "Hallownest",
+        "source": "Hollow Knight",
+        "source_type": "video-game",
+        "location": "Greenpath upper surface",
+        "flavor": "Overcast and still. The ancient kingdom below is unaware. Moss grows over everything, patient and slow.",
+        "tone": "eerie",
+        "temp_bias": "cool",
+        "tags": ["insect world", "ruins", "quiet dread"]
+      }
+    ]
+  },
+
+  "45": {
+    "label": "Fog",
+    "settings": [
+      {
+        "setting": "Silent Hill",
+        "source": "Silent Hill",
+        "source_type": "video-game",
+        "location": "Toluca Lake area",
+        "flavor": "Thick fog has rolled in from the lake. Visibility near zero. Something is making sounds behind you. Do not run.",
+        "tone": "eerie",
+        "temp_bias": "cool",
+        "tags": ["horror", "psychological", "iconic fog", "monster"]
+      },
+      {
+        "setting": "Ravenloft",
+        "source": "Dungeons & Dragons",
+        "source_type": "tabletop",
+        "location": "The Mists, Barovia border",
+        "flavor": "The Mists of Ravenloft close in at the edges of the domain. No road leads through them. You are Strahd's guest now.",
+        "tone": "oppressive",
+        "temp_bias": "cold",
+        "tags": ["D&D", "gothic horror", "vampire", "trapped"]
+      },
+      {
+        "setting": "Innsmouth",
+        "source": "H.P. Lovecraft",
+        "source_type": "literature",
+        "location": "Innsmouth, Massachusetts",
+        "flavor": "A fine salt mist hangs over the town. The buildings are old. The locals stare. The sea is very close.",
+        "tone": "eerie",
+        "temp_bias": "cool",
+        "tags": ["cosmic horror", "seaside", "dread"]
+      },
+      {
+        "setting": "Tsushima island",
+        "source": "Ghost of Tsushima",
+        "source_type": "video-game",
+        "location": "Mountain shrine approach",
+        "flavor": "Morning fog softens the cedar slopes around the shrine. A fox pauses at the torii gate. The Mongols are still here, somewhere.",
+        "tone": "serene",
+        "temp_bias": "cool",
+        "tags": ["feudal japan", "samurai", "spiritual", "beautiful"]
+      },
+      {
+        "setting": "Diablo's Sanctuary",
+        "source": "Diablo series",
+        "source_type": "video-game",
+        "location": "Tristram surroundings, Act I",
+        "flavor": "Fog clings to the dead fields around Tristram. The villagers won't leave their homes. The cathedral radiates something cold.",
+        "tone": "bleak",
+        "temp_bias": "cool",
+        "tags": ["dark fantasy", "gothic", "demon", "decay"]
+      }
+    ]
+  },
+
+  "48": {
+    "label": "Icy fog",
+    "settings": [
+      {
+        "setting": "The Misty Mountains",
+        "source": "Lord of the Rings",
+        "source_type": "fantasy",
+        "location": "High Pass, above Goblin-Town",
+        "flavor": "Ice-laden mist swallows the pass. The path is narrow. The goblins are below — somewhere — and the eagles are distant.",
+        "tone": "tense",
+        "temp_bias": "cold",
+        "tags": ["tolkien", "mountain pass", "danger"]
+      },
+      {
+        "setting": "Noveria",
+        "source": "Mass Effect",
+        "source_type": "sci-fi",
+        "location": "Hot Labs exterior",
+        "flavor": "Freezing fog against the viewport. Ice crystals form on anything exposed. The rachni are inside. This is somehow the better option.",
+        "tone": "tense",
+        "temp_bias": "freezing",
+        "tags": ["mass effect", "arctic", "horror adjacent"]
+      },
+      {
+        "setting": "Frostpunk outskirts",
+        "source": "Frostpunk",
+        "source_type": "video-game",
+        "location": "New London perimeter",
+        "flavor": "Ice fog beyond the generator's heat radius. Scouts sent out this morning haven't returned. Keep the fires burning.",
+        "tone": "oppressive",
+        "temp_bias": "freezing",
+        "tags": ["survival", "coal", "apocalyptic winter"]
+      }
+    ]
+  },
+
+  "51": {
+    "label": "Light drizzle",
+    "settings": [
+      {
+        "setting": "Pelican Town",
+        "source": "Stardew Valley",
+        "source_type": "video-game",
+        "location": "Pelican Town, Stardew Valley",
+        "flavor": "A soft drizzle on the farm. Good fishing weather. The crops are happy. Maybe stop by the saloon later.",
+        "tone": "cozy",
+        "temp_bias": "cool",
+        "tags": ["farming", "cozy", "low stakes"]
+      },
+      {
+        "setting": "Rivendell",
+        "source": "Lord of the Rings",
+        "source_type": "fantasy",
+        "location": "Imladris, the Last Homely House",
+        "flavor": "A thin veil of mist drifts through the falls. Elrond's house shimmers in grey-silver. It is peaceful here — perhaps too peaceful.",
+        "tone": "serene",
+        "temp_bias": "cool",
+        "tags": ["tolkien", "elves", "sanctuary"]
+      },
+      {
+        "setting": "The Shire",
+        "source": "Lord of the Rings",
+        "source_type": "fantasy",
+        "location": "Hobbiton",
+        "flavor": "Gentle drizzle on the Hill. Someone's chimney smoke bends sideways. A perfect day to stay in with a second breakfast.",
+        "tone": "cozy",
+        "temp_bias": "cool",
+        "tags": ["tolkien", "pastoral", "comfort"]
+      }
+    ]
+  },
+
+  "53": {
+    "label": "Moderate drizzle",
+    "settings": [
+      {
+        "setting": "Baldur's Gate",
+        "source": "Baldur's Gate series",
+        "source_type": "video-game",
+        "location": "Lower City docks, Chionthar estuary",
+        "flavor": "Sea drizzle off the Chionthar estuary. The torches on the docks blur to yellow smears. The harbour master squints at your papers.",
+        "tone": "eerie",
+        "temp_bias": "cool",
+        "tags": ["D&D", "coastal", "fantasy port", "low visibility"]
+      },
+      {
+        "setting": "Sigil",
+        "source": "Planescape / Dungeons & Dragons",
+        "source_type": "tabletop",
+        "location": "The Hive Ward, Sigil",
+        "flavor": "Something like drizzle falls in the Cage today — nobody knows where it comes from given there's no sky. The Dustmen don't seem to mind.",
+        "tone": "eerie",
+        "temp_bias": "cool",
+        "tags": ["D&D", "planar city", "surreal", "toroidal"]
+      }
+    ]
+  },
+
+  "55": {
+    "label": "Dense drizzle",
+    "settings": [
+      {
+        "setting": "Moorland England",
+        "source": "Call of Cthulhu",
+        "source_type": "tabletop",
+        "location": "English moorlands, 1920s",
+        "flavor": "Thick misting rain on the moors, the kind that makes compasses spin and roads disappear. Stay on the path. There is no path.",
+        "tone": "eerie",
+        "temp_bias": "cool",
+        "tags": ["cosmic horror", "gothic", "british moors", "CoC"]
+      },
+      {
+        "setting": "Columbia",
+        "source": "BioShock Infinite",
+        "source_type": "video-game",
+        "location": "Battleship Bay district",
+        "flavor": "The floating city drifts into a cloud bank. The carousel stops. Somewhere, a Vigors salesman keeps smiling through the wet.",
+        "tone": "eerie",
+        "temp_bias": "cool",
+        "tags": ["floating city", "dystopia", "americana horror"]
+      }
+    ]
+  },
+
+  "56": {
+    "label": "Light freezing drizzle",
+    "settings": [
+      {
+        "setting": "The Long Dark",
+        "source": "The Long Dark",
+        "source_type": "video-game",
+        "location": "Great Bear Island, post-geomagnetic disaster",
+        "flavor": "A light freezing drizzle settles over the valley. Fuel is low. The wolves are somewhere close. Mark your path home.",
+        "tone": "tense",
+        "temp_bias": "cold",
+        "tags": ["survival", "post-disaster", "canadian wilderness"]
+      },
+      {
+        "setting": "Icewind Dale",
+        "source": "Forgotten Realms / D&D",
+        "source_type": "tabletop",
+        "location": "Ten-Towns, Icewind Dale",
+        "flavor": "Freezing mist-rain near Ten-Towns. The locals call it a mild day. Your fingers disagree.",
+        "tone": "tense",
+        "temp_bias": "cold",
+        "tags": ["D&D", "Faerun", "arctic"]
+      }
+    ]
+  },
+
+  "57": {
+    "label": "Heavy freezing drizzle",
+    "settings": [
+      {
+        "setting": "Frostpunk",
+        "source": "Frostpunk",
+        "source_type": "video-game",
+        "location": "New London, volcanic winter",
+        "flavor": "Freezing rain coats every surface in a treacherous glaze. The generator burns hotter. The coal situation is becoming a situation.",
+        "tone": "oppressive",
+        "temp_bias": "freezing",
+        "tags": ["survival city-builder", "coal", "tough choices"]
+      },
+      {
+        "setting": "The North Beyond the Wall",
+        "source": "Game of Thrones / ASOIAF",
+        "source_type": "fantasy",
+        "location": "Beyond the Wall",
+        "flavor": "Freezing sleet beyond the Wall. The Wildlings have sheltered. The White Walkers have not. Keep moving.",
+        "tone": "oppressive",
+        "temp_bias": "freezing",
+        "tags": ["ASOIAF", "survival", "white walkers"]
+      }
+    ]
+  },
+
+  "61": {
+    "label": "Slight rain",
+    "settings": [
+      {
+        "setting": "The Shire",
+        "source": "Lord of the Rings",
+        "source_type": "fantasy",
+        "location": "Bywater road",
+        "flavor": "Light rain on the Bywater road. Hobbits duck into their holes. The Green Dragon's fire is on early.",
+        "tone": "cozy",
+        "temp_bias": "cool",
+        "tags": ["tolkien", "pastoral", "comfort", "inn"]
+      },
+      {
+        "setting": "Pelican Town",
+        "source": "Stardew Valley",
+        "source_type": "video-game",
+        "location": "The farm",
+        "flavor": "Rain today. You don't need to water the crops. Willy says the fishing is excellent. Pierre is open.",
+        "tone": "cozy",
+        "temp_bias": "cool",
+        "tags": ["farming", "cozy"]
+      },
+      {
+        "setting": "Tsushima island",
+        "source": "Ghost of Tsushima",
+        "source_type": "video-game",
+        "location": "Izuhara countryside",
+        "flavor": "Soft rain on the bamboo. The ink runs on a half-written haiku. The Mongols' torches hiss in the distance.",
+        "tone": "serene",
+        "temp_bias": "cool",
+        "tags": ["feudal japan", "samurai", "poetic", "bittersweet"]
+      }
+    ]
+  },
+
+  "63": {
+    "label": "Moderate rain",
+    "settings": [
+      {
+        "setting": "Zaun",
+        "source": "Arcane / League of Legends",
+        "source_type": "sci-fi",
+        "location": "The undercity, below Piltover",
+        "flavor": "Chem-tinged rain sheens the cobblestones grey-green. The chem-lights glow. Don't look up too long.",
+        "tone": "bleak",
+        "temp_bias": "cool",
+        "tags": ["steampunk", "industrial", "class warfare"]
+      },
+      {
+        "setting": "Velen",
+        "source": "The Witcher 3",
+        "source_type": "video-game",
+        "location": "No Man's Land",
+        "flavor": "Velen mud in the rain smells of old war and older grief. The plague crows don't mind the wet.",
+        "tone": "bleak",
+        "temp_bias": "cool",
+        "tags": ["dark fantasy", "war-torn", "peasant suffering"]
+      },
+      {
+        "setting": "Blade Runner Los Angeles",
+        "source": "Blade Runner",
+        "source_type": "sci-fi",
+        "location": "2049 Los Angeles",
+        "flavor": "Acid rain, neon reflections, replicant silence. Someone is playing a sad piano in a building you can't see.",
+        "tone": "bleak",
+        "temp_bias": "cool",
+        "tags": ["noir", "cyberpunk", "iconic rain", "dystopia"]
+      },
+      {
+        "setting": "Seattle sprawl",
+        "source": "Shadowrun",
+        "source_type": "tabletop",
+        "location": "Shadowrun Seattle metroplex",
+        "flavor": "Business as usual in the sprawl. Acid-wash rain on corrugated awnings. Matrix uplink intact. Watch your back.",
+        "tone": "tense",
+        "temp_bias": "cool",
+        "tags": ["cyberpunk fantasy", "tabletop", "urban"]
+      }
+    ]
+  },
+
+  "65": {
+    "label": "Heavy rain",
+    "settings": [
+      {
+        "setting": "Yharnam",
+        "source": "Bloodborne",
+        "source_type": "video-game",
+        "location": "Cathedral Ward",
+        "flavor": "Cold rain slicks the Gothic cobblestones. Gas lamps hiss. The beasts are hunting. Stay inside if you have any sense, hunter.",
+        "tone": "eerie",
+        "temp_bias": "cold",
+        "tags": ["gothic horror", "Victorian", "eldritch"]
+      },
+      {
+        "setting": "Night City",
+        "source": "Cyberpunk 2077",
+        "source_type": "video-game",
+        "location": "Pacifica, storm season",
+        "flavor": "Heavy rain on Pacifica. The Combat Zone floods from the bottom up. The gangs pause for approximately nothing.",
+        "tone": "tense",
+        "temp_bias": "warm",
+        "tags": ["cyberpunk", "urban", "gang territory"]
+      },
+      {
+        "setting": "The Warp",
+        "source": "Warhammer 40,000",
+        "source_type": "tabletop",
+        "location": "Warp-tainted borderworld",
+        "flavor": "Something like heavy rain falls here, but you're not sure it's water. The sky is the wrong colour. Don't breathe too deeply.",
+        "tone": "oppressive",
+        "temp_bias": "neutral",
+        "tags": ["grimdark", "chaos", "reality degradation"]
+      }
+    ]
+  },
+
+  "66": {
+    "label": "Light freezing rain",
+    "settings": [
+      {
+        "setting": "Skyrim",
+        "source": "The Elder Scrolls V: Skyrim",
+        "source_type": "video-game",
+        "location": "Falkreath hold, mountain roads",
+        "flavor": "Freezing rain on the Falkreath pass. The road is ice. The bandits ahead haven't noticed you yet — they're too cold.",
+        "tone": "tense",
+        "temp_bias": "cold",
+        "tags": ["nordic", "fantasy", "mountain", "survival adjacent"]
+      },
+      {
+        "setting": "Ironforge approach",
+        "source": "World of Warcraft",
+        "source_type": "video-game",
+        "location": "Dun Morogh pass",
+        "flavor": "Freezing rain on the Dun Morogh road. Every surface is slick. The dwarves inside Ironforge are warm. You are not inside Ironforge.",
+        "tone": "bleak",
+        "temp_bias": "cold",
+        "tags": ["WoW", "dwarven", "mountain"]
+      }
+    ]
+  },
+
+  "67": {
+    "label": "Heavy freezing rain",
+    "settings": [
+      {
+        "setting": "Frostpunk",
+        "source": "Frostpunk",
+        "source_type": "video-game",
+        "location": "New London, volcanic winter",
+        "flavor": "Temperature at -70C and the rain freezes on contact with everything. The generator must not go out. The coal is running low.",
+        "tone": "oppressive",
+        "temp_bias": "freezing",
+        "tags": ["survival city-builder", "apocalypse", "coal"]
+      },
+      {
+        "setting": "The Long Dark",
+        "source": "The Long Dark",
+        "source_type": "video-game",
+        "location": "Coastal Highway, Great Bear Island",
+        "flavor": "Freezing rain on the highway. Every surface is black ice. The car wreck ahead might have supplies. It's a bad gamble either way.",
+        "tone": "tense",
+        "temp_bias": "freezing",
+        "tags": ["survival", "post-disaster", "wilderness"]
+      }
+    ]
+  },
+
+  "71": {
+    "label": "Slight snow",
+    "settings": [
+      {
+        "setting": "Hobbiton",
+        "source": "Lord of the Rings",
+        "source_type": "fantasy",
+        "location": "The Shire in winter",
+        "flavor": "A dusting of snow on Bag End's round door. The smoke from a dozen chimneys mixes with the cold air. Very cozy inside, they say.",
+        "tone": "cozy",
+        "temp_bias": "cold",
+        "tags": ["tolkien", "pastoral", "winter cozy"]
+      },
+      {
+        "setting": "Ironforge",
+        "source": "World of Warcraft",
+        "source_type": "video-game",
+        "location": "Dun Morogh outside Ironforge gates",
+        "flavor": "Light snow on the Dun Morogh pass. Troggs are stirring in the drifts. The forge inside Ironforge burns warm, though.",
+        "tone": "cozy",
+        "temp_bias": "cold",
+        "tags": ["WoW", "dwarven", "mountain", "cozy inside"]
+      },
+      {
+        "setting": "Narnia",
+        "source": "The Chronicles of Narnia",
+        "source_type": "fantasy",
+        "location": "The lamp-post clearing",
+        "flavor": "Fresh snow around the lamp-post. Always winter, never Christmas. Or — wait. Is that a robin?",
+        "tone": "eerie",
+        "temp_bias": "cold",
+        "tags": ["narnia", "magical winter", "CS Lewis", "enchanted"]
+      }
+    ]
+  },
+
+  "73": {
+    "label": "Moderate snow",
+    "settings": [
+      {
+        "setting": "Winterfell",
+        "source": "Game of Thrones / ASOIAF",
+        "source_type": "fantasy",
+        "location": "Winterfell, the North",
+        "flavor": "Snow comes to Winterfell early this year. The dire wolves are restless. Winter is not coming — it's here.",
+        "tone": "bleak",
+        "temp_bias": "cold",
+        "tags": ["ASOIAF", "medieval fantasy", "winter", "political"]
+      },
+      {
+        "setting": "Skyrim",
+        "source": "The Elder Scrolls V: Skyrim",
+        "source_type": "video-game",
+        "location": "The Throat of the World approach",
+        "flavor": "Heavy snow on the mountain road to High Hrothgar. 7,000 steps. The Greybeards are waiting. FUS RO DAH.",
+        "tone": "epic",
+        "temp_bias": "cold",
+        "tags": ["nordic", "fantasy", "mountain", "iconic"]
+      },
+      {
+        "setting": "Solstheim",
+        "source": "The Elder Scrolls V: Dragonborn DLC",
+        "source_type": "video-game",
+        "location": "Skaal Village",
+        "flavor": "Ash-grey snow falls on Solstheim — half Nordic ice, half Morrowind ash. The Skaal light fires. Miraak watches from his temple.",
+        "tone": "eerie",
+        "temp_bias": "cold",
+        "tags": ["skyrim DLC", "nordic", "ash mixed", "cultist"]
+      }
+    ]
+  },
+
+  "75": {
+    "label": "Heavy snow",
+    "settings": [
+      {
+        "setting": "Hoth",
+        "source": "Star Wars",
+        "source_type": "sci-fi",
+        "location": "Echo Base perimeter",
+        "flavor": "Full whiteout on Hoth. Wampa activity likely. Do not go out after dark. Your tauntaun won't make it.",
+        "tone": "tense",
+        "temp_bias": "freezing",
+        "tags": ["star wars", "ice planet", "survival", "rebel base"]
+      },
+      {
+        "setting": "The North Beyond the Wall",
+        "source": "Game of Thrones / ASOIAF",
+        "source_type": "fantasy",
+        "location": "The True North",
+        "flavor": "The Long Night deepens. Heavy snow without wind — the silence is worse than the storm. The fire matters more than anything.",
+        "tone": "oppressive",
+        "temp_bias": "freezing",
+        "tags": ["ASOIAF", "apocalyptic winter", "white walkers", "survival"]
+      },
+      {
+        "setting": "Icewind Dale",
+        "source": "Forgotten Realms / D&D",
+        "source_type": "tabletop",
+        "location": "Ten-Towns, Icewind Dale",
+        "flavor": "A whiteout blizzard on Kelvin's Cairn. The knucklehead trout are all inside. You probably should be too.",
+        "tone": "tense",
+        "temp_bias": "freezing",
+        "tags": ["D&D", "Faerun", "arctic", "Drizzt homeland"]
+      }
+    ]
+  },
+
+  "77": {
+    "label": "Snow grains",
+    "settings": [
+      {
+        "setting": "Phyrexia (Mirrodin Corrupted)",
+        "source": "Magic: The Gathering",
+        "source_type": "tabletop",
+        "location": "White Sun pole, now Phyrexian",
+        "flavor": "Oil-tainted snow grains fall in fine sheets across the metallic landscape. Compleation is better inside, the propaganda says.",
+        "tone": "oppressive",
+        "temp_bias": "freezing",
+        "tags": ["MtG", "body horror", "metallic", "corrupted winter"]
+      },
+      {
+        "setting": "The Long Dark",
+        "source": "The Long Dark",
+        "source_type": "video-game",
+        "location": "Forlorn Muskeg",
+        "flavor": "Fine snow grains on the muskeg. Almost peaceful. The ice underfoot is unpredictable. Test every step.",
+        "tone": "tense",
+        "temp_bias": "freezing",
+        "tags": ["survival", "wilderness", "quiet danger"]
+      }
+    ]
+  },
+
+  "80": {
+    "label": "Slight rain showers",
+    "settings": [
+      {
+        "setting": "Zora's Domain",
+        "source": "The Legend of Zelda: Breath of the Wild",
+        "source_type": "video-game",
+        "location": "Lanayru region",
+        "flavor": "Light showers on the approach to Zora's Domain. The Zora enjoy the rain. The Lynel up the ridge does not care either way.",
+        "tone": "serene",
+        "temp_bias": "cool",
+        "tags": ["zelda", "open world", "elemental", "water"]
+      },
+      {
+        "setting": "Pelican Town",
+        "source": "Stardew Valley",
+        "source_type": "video-game",
+        "location": "The farm, spring or summer",
+        "flavor": "Brief showers today. The sprinklers are unnecessary. Emily's light is on. This is a good day.",
+        "tone": "cozy",
+        "temp_bias": "cool",
+        "tags": ["farming", "cozy"]
+      }
+    ]
+  },
+
+  "81": {
+    "label": "Moderate rain showers",
+    "settings": [
+      {
+        "setting": "Liyue Harbor",
+        "source": "Genshin Impact",
+        "source_type": "video-game",
+        "location": "Harbor docks in a squall",
+        "flavor": "Warm rain on the harbor stone, the smell of spices from covered stalls, lanterns reflected in still water. The merchant fleet rides it out.",
+        "tone": "cozy",
+        "temp_bias": "warm",
+        "tags": ["fantasy", "trading city", "storm season"]
+      },
+      {
+        "setting": "Velen",
+        "source": "The Witcher 3",
+        "source_type": "video-game",
+        "location": "No Man's Land, between villages",
+        "flavor": "Passing squall over No Man's Land. The mud gets worse. The ghouls don't mind wet. Geralt sighs.",
+        "tone": "bleak",
+        "temp_bias": "cool",
+        "tags": ["dark fantasy", "war-torn", "monster hunting"]
+      }
+    ]
+  },
+
+  "82": {
+    "label": "Violent rain showers",
+    "settings": [
+      {
+        "setting": "Panau",
+        "source": "Just Cause 2",
+        "source_type": "video-game",
+        "location": "Panau archipelago",
+        "flavor": "A tropical storm rolls in hard from the south. Perfect conditions for grappling-hook stunts. Chaos is opportunity.",
+        "tone": "epic",
+        "temp_bias": "warm",
+        "tags": ["tropical", "action", "chaos agent"]
+      },
+      {
+        "setting": "Lustria",
+        "source": "Warhammer Fantasy",
+        "source_type": "tabletop",
+        "location": "Lustria jungle, lizardman territory",
+        "flavor": "Torrential downpour in Lustria. The Skinks say this is normal. The Skaven disagree, already retreating. The Old Ones planned this.",
+        "tone": "epic",
+        "temp_bias": "hot",
+        "tags": ["warhammer fantasy", "jungle", "lizardmen", "ancient plans"]
+      }
+    ]
+  },
+
+  "85": {
+    "label": "Slight snow showers",
+    "settings": [
+      {
+        "setting": "Rivendell in winter",
+        "source": "Lord of the Rings",
+        "source_type": "fantasy",
+        "location": "Imladris valley in winter",
+        "flavor": "Light snow showers drift through the valley of Rivendell. The waterfalls continue regardless. Elrond has seen worse winters, many times over.",
+        "tone": "serene",
+        "temp_bias": "cold",
+        "tags": ["tolkien", "elves", "sanctuary", "winter"]
+      },
+      {
+        "setting": "Skyrim",
+        "source": "The Elder Scrolls V: Skyrim",
+        "source_type": "video-game",
+        "location": "Whiterun hold, the tundra",
+        "flavor": "Snow showers over the tundra outside Whiterun. The Companions are training in the yard anyway. The forge is hot.",
+        "tone": "epic",
+        "temp_bias": "cold",
+        "tags": ["nordic", "fantasy", "companions", "forge"]
+      }
+    ]
+  },
+
+  "86": {
+    "label": "Heavy snow showers",
+    "settings": [
+      {
+        "setting": "Hoth",
+        "source": "Star Wars",
+        "source_type": "sci-fi",
+        "location": "Hoth open plains",
+        "flavor": "Heavy snow squalls across the Hoth plains. Sensor equipment failing. The Imperial fleet is out there, beyond the weather.",
+        "tone": "tense",
+        "temp_bias": "freezing",
+        "tags": ["star wars", "ice planet", "survival"]
+      },
+      {
+        "setting": "Fist of the First Men",
+        "source": "Game of Thrones / ASOIAF",
+        "source_type": "fantasy",
+        "location": "Beyond the Wall",
+        "flavor": "Heavy squall at the Fist of the First Men. The crows form a perimeter. The dead are somewhere in the white.",
+        "tone": "oppressive",
+        "temp_bias": "freezing",
+        "tags": ["ASOIAF", "white walkers", "night's watch", "survival"]
+      }
+    ]
+  },
+
+  "95": {
+    "label": "Thunderstorm",
+    "settings": [
+      {
+        "setting": "Asgard",
+        "source": "Norse Mythology / Marvel",
+        "source_type": "fantasy",
+        "location": "The Rainbow Bridge, Bifrost",
+        "flavor": "Thor is nearby. The lightning is structural to the atmosphere. Stand clear of anything metallic.",
+        "tone": "epic",
+        "temp_bias": "cool",
+        "tags": ["mythology", "divine", "electricity"]
+      },
+      {
+        "setting": "Mordor",
+        "source": "Lord of the Rings",
+        "source_type": "fantasy",
+        "location": "Mount Doom, Sammath Naur",
+        "flavor": "Lightning breaks across the Cracks of Doom. The Ring is heavy. The Eye turns. This is the end of something.",
+        "tone": "oppressive",
+        "temp_bias": "hot",
+        "tags": ["tolkien", "volcanic", "climax", "apocalyptic"]
+      },
+      {
+        "setting": "Tempest Keep",
+        "source": "World of Warcraft",
+        "source_type": "video-game",
+        "location": "Netherstorm, Outland",
+        "flavor": "Arcane storms crackle across the fractured sky. The Draenei wreckage still glows. Keep your healer close.",
+        "tone": "tense",
+        "temp_bias": "neutral",
+        "tags": ["WoW", "arcane magic", "ruins"]
+      },
+      {
+        "setting": "Sigil",
+        "source": "Planescape / Dungeons & Dragons",
+        "source_type": "tabletop",
+        "location": "The City of Doors",
+        "flavor": "A planar storm crackles over the Cage. Portals flicker open and shut without warning. The Lady of Pain watches impassively.",
+        "tone": "eerie",
+        "temp_bias": "neutral",
+        "tags": ["D&D", "planar city", "surreal"]
+      },
+      {
+        "setting": "EVE Online",
+        "source": "EVE Online",
+        "source_type": "sci-fi",
+        "location": "Lowsec storm system",
+        "flavor": "An electromagnetic storm blooms off the nebula. Shields cycling. The locals are watching your transponder.",
+        "tone": "tense",
+        "temp_bias": "neutral",
+        "tags": ["space sim", "danger", "electromagnetic"]
+      }
+    ]
+  },
+
+  "96": {
+    "label": "Thunderstorm with slight hail",
+    "settings": [
+      {
+        "setting": "The Tempest Planes",
+        "source": "Planescape / D&D",
+        "source_type": "tabletop",
+        "location": "Elemental Plane of Air",
+        "flavor": "Hailstones of compacted wind-crystal rake the open plane. There is no ground. The storm is the terrain. Flying is mandatory.",
+        "tone": "epic",
+        "temp_bias": "cool",
+        "tags": ["planar", "elemental", "D&D", "flying required"]
+      },
+      {
+        "setting": "Rannoch",
+        "source": "Mass Effect 3",
+        "source_type": "sci-fi",
+        "location": "Rannoch geth highlands",
+        "flavor": "Electrical storm with particulate hail over the geth highlands. Shields at fifty percent. The geth are adapting. They always are.",
+        "tone": "tense",
+        "temp_bias": "cool",
+        "tags": ["mass effect", "geth", "alien world"]
+      }
+    ]
+  },
+
+  "99": {
+    "label": "Thunderstorm with heavy hail",
+    "settings": [
+      {
+        "setting": "Avernus",
+        "source": "Dungeons & Dragons / Nine Hells",
+        "source_type": "tabletop",
+        "location": "Avernus, the first layer of Hell",
+        "flavor": "Iron hailstones rake the hellscape of Avernus as lightning splits the sky. This is not metaphorical weather. This is intent.",
+        "tone": "oppressive",
+        "temp_bias": "hot",
+        "tags": ["D&D", "devils", "infernal", "planar"]
+      },
+      {
+        "setting": "Blade's Edge Mountains",
+        "source": "World of Warcraft",
+        "source_type": "video-game",
+        "location": "Blade's Edge Mountains, Outland",
+        "flavor": "Fel-charged hailstorm over Blade's Edge. The gronn don't flinch. You probably should.",
+        "tone": "tense",
+        "temp_bias": "neutral",
+        "tags": ["WoW", "outland", "chaos weather", "dangerous"]
+      }
+    ]
+  }
+}

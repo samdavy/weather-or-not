@@ -2,12 +2,12 @@ name: Weather Agent
 
 on:
   schedule:
-    # Morning report — 8 AM UTC (adjust to your timezone)
-    - cron: "0 8 * * *"
-    # Afternoon check — 1 PM UTC
-    - cron: "0 13 * * *"
-    # Evening wrap — 6 PM UTC
-    - cron: "0 18 * * *"
+    # Morning report — 8 AM MST (3 PM UTC)
+    - cron: "0 15 * * *"
+    # Midday check — 12 PM MST (7 PM UTC)
+    - cron: "0 19 * * *"
+    # Afternoon update — 4 PM MST (11 PM UTC)
+    - cron: "0 23 * * *"
   # Allow manual trigger from GitHub Actions UI
   workflow_dispatch:
 
@@ -28,7 +28,6 @@ jobs:
         env:
           BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
           CHAT_ID: ${{ secrets.CHAT_ID }}
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           LAT: ${{ secrets.LAT }}
           LON: ${{ secrets.LON }}
           LOCATION_NAME: ${{ secrets.LOCATION_NAME }}

@@ -4,6 +4,7 @@ Requires env vars: BOT_TOKEN, CHAT_ID
 Optional: LAT, LON, LOCATION_NAME (defaults to Draper, UT)
 """
 
+import json
 import os
 import random
 import sys
@@ -15,6 +16,18 @@ BOT_TOKEN        = os.environ["BOT_TOKEN"]
 CHAT_ID          = os.environ["CHAT_ID"]
 LAT              = os.environ.get("LAT", "40.5247")
 LON              = os.environ.get("LON", "-111.8638")
+FICTION_DB_PATH  = os.path.join(os.path.dirname(__file__), "fiction.json")
+
+
+def load_fictional_db(path: str) -> dict:
+    try:
+        with open(path, "r", encoding="utf-8") as fp:
+            return json.load(fp)
+    except Exception:
+        return {}
+
+
+FICTION_DB = load_fictional_db(FICTION_DB_PATH)
 
 
 def get_viable_clothing(temp_f: float, condition: str) -> str:
@@ -40,23 +53,19 @@ def get_viable_clothing(temp_f: float, condition: str) -> str:
     return "Shorts, breathable tee, sun protection"
 
 
-def get_fictional_analog(temp_f: float, condition: str) -> str:
-    condition = condition.lower()
-    if "snow" in condition:
-        return random.choice(["Hoth", "Narnia", "The Shire in winter", "Winterfell", "Frostbite Falls"])
-    if "fog" in condition or "icy fog" in condition:
-        return random.choice(["Dagobah", "The Misty Mountains", "Silent Hill", "The Overlook Hotel", "The Black Gate"])
-    if "rain" in condition or "drizzle" in condition:
-        return random.choice(["Endor", "Blade Runner's Los Angeles", "The Citadel from Mass Effect", "The Witcher swamp", "Rivendell in drizzle"])
-    if "thunderstorm" in condition or "hail" in condition:
-        return random.choice(["Krypton during a storm", "Stormwind", "Asgard", "Nexus Prime", "The Eye of Sauron"])
-    if "clear" in condition and temp_f >= 85:
-        return random.choice(["Tatooine", "Arrakis", "Mad Max Wasteland", "Planet Vulcan", "Mustafar"])
-    if "clear" in condition:
-        return random.choice(["Naboo", "The Shire", "The Lawn of Hogwarts", "The Starship Enterprise deck", "The Millennium Falcon cockpit"])
-    if "cloud" in condition or "overcast" in condition:
-        return random.choice(["Cloud City", "The Grey Havens", "The Forbidden Forest", "The Citadel", "The Bridge of Khazad-dûm"])
-    return random.choice(["Earth", "The Matrix", "Cybertron", "R'lyeh", "Pandora"])
+def get_fictional_analog(weather_code: int) -> str:
+    code_key = str(weather_code)
+    entry = FICTION_DB.get(code_key)
+
+    if not entry or not isinstance(entry, dict):
+        return "Earth"
+
+    settings = entry.get("settings")
+    if not settings:
+        return entry.get("label", "Earth")
+
+    choice = random.choice(settings)
+    return choice.get("setting", entry.get("label", "Earth"))
 
 WMO_CODES = {
     0: "clear sky", 1: "mainly clear", 2: "partly cloudy", 3: "overcast",
@@ -96,7 +105,7 @@ def format_weather_report(data: dict) -> str:
         f"Day High: {round(d['temperature_2m_max'][0])}F\n"
         f"Day Low: {round(d['temperature_2m_min'][0])}F\n"
         f"Viable Clothing: {get_viable_clothing(c['temperature_2m'], condition)}\n"
-        f"Fictional Analog: {get_fictional_analog(c['temperature_2m'], condition)}"
+        f"Fictional Analog: {get_fictional_analog(code)}"
     )
 
 # ── Telegram ──────────────────────────────────────────────────────────────────
