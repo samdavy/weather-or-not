@@ -1,57 +1,59 @@
-# weather-agent
+# weather-or-not
 
-Sends plain formatted weather reports to Telegram 3x/day via GitHub Actions.
+Sends a plain weather report to Telegram. Two modes:
+
+- **On-demand:** message the bot, get a current report back (Telegram webhook, runs as a Railway web service).
+- **Scheduled:** 3x/day automatic push to a fixed chat (Railway cron service).
 
 ## Setup
 
-### 1. Telegram bot
+### 1. Create a Telegram bot
 
-1. Message `@BotFather` on Telegram → `/newbot` → follow prompts → copy the token
-2. Message your new bot once (so it has a chat to send to)
+1. Message `@BotFather` on Telegram → `/newbot` → follow prompts → copy the token.
+2. Message your new bot once (so it has a chat to send to).
 3. Get your chat ID:
-   ```
+   ```bash
    curl https://api.telegram.org/bot<YOUR_TOKEN>/getUpdates
    ```
-   Look for `"chat": {"id": 123456789}` in the response
+   Look for `"chat": {"id": 123456789}` in the response.
 
 ### 2. Get your coordinates
 
-Find lat/lon for your location: https://www.latlong.net/
+Find lat/lon for your location: https://www.latlong.net/ (defaults are Draper, UT).
 
-### 3. GitHub repo secrets
+### 3. Deploy to Railway
 
-Go to your repo → Settings → Secrets and variables → Actions → New repository secret
+Create a new Railway project from this repo. You'll add **two services** to the same project, both pointing at the same repo. They'll share env vars at the project level.
 
-Add these secrets:
+**Project-level env vars** (set once, shared by both services):
 
-| Secret | Value |
-|---|---|
-| `BOT_TOKEN` | Your Telegram bot token |
-| `CHAT_ID` | Your Telegram chat ID (the number) |
+| Variable    | Value                          |
+|-------------|--------------------------------|
+| `BOT_TOKEN` | Your Telegram bot token        |
+| `CHAT_ID`   | Your Telegram chat ID (number) |
+| `LAT`       | (optional) latitude override   |
+| `LON`       | (optional) longitude override  |
 
-LAT/LON/LOCATION_NAME are hardcoded to Draper, UT — override with secrets if needed.
+#### Service A — webhook (on-demand replies)
 
-### 4. Push to GitHub
+- Type: **Web service**
+- Start command: leave default (uses `Procfile`: `python bot_server.py`)
+- After it deploys, grab the public URL (e.g. `https://weather-or-not.up.railway.app`) and register the webhook with Telegram:
+  ```bash
+  curl -F "url=https://<your-app>.up.railway.app/webhook" \
+       https://api.telegram.org/bot<YOUR_TOKEN>/setWebhook
+  ```
 
-```bash
-git init
-git add .
-git commit -m "init"
-git remote add origin https://github.com/YOU/weather-agent.git
-git push -u origin main
-```
+#### Service B — scheduled push (3x/day report)
 
-The workflow will run automatically at 8 AM, 1 PM, and 6 PM UTC.
-Trigger it manually anytime via Actions → Weather Agent → Run workflow.
-
-## Adjusting the schedule
-
-Edit `.github/workflows/weather.yml`. Cron times are in UTC.
-Converter: https://dateful.com/time-zone-converter
-
-## Behavior
-
-The script sends a plain, formatted weather report without AI editorialization.
+- Type: **Cron service** (Railway → New Service → from same repo → set service type to Cron)
+- Start command override: `python weather_agent.py`
+- Cron schedule (UTC; times below are MST / winter — they'll be one hour later in clock time during DST):
+  - `0 15 * * *` — 8 AM Mountain
+  - `0 20 * * *` — 1 PM Mountain
+  - `0 1 * * *` — 6 PM Mountain
+  
+  Railway cron services run a single schedule per service, so either set up three cron services or pick the one that matters most. Cron syntax converter: https://crontab.guru/
 
 ## Running locally
 
@@ -61,8 +63,13 @@ export CHAT_ID=...
 # optional overrides — defaults to Draper, UT
 # export LAT=40.5247
 # export LON=-111.8638
-# export LOCATION_NAME="Draper, UT"
 
-pip install httpx
-python weather_agent.py
+pip install -r requirements.txt
+python weather_agent.py    # one-shot scheduled-report behavior
+# or
+python bot_server.py       # webhook server on $PORT (default 8080)
 ```
+
+## Behavior
+
+The script sends a plain, formatted weather report without AI editorialization.

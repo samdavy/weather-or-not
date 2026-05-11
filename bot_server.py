@@ -18,9 +18,8 @@ def handle_update(update: dict) -> None:
     """Process a single Telegram update."""
     try:
         chat_id = update["message"]["chat"]["id"]
-        text = update["message"].get("text", "").strip().lower()
     except KeyError:
-        return  # not a text message, ignore
+        return  # not a message we care about, ignore
 
     # any message triggers a plain report
     try:

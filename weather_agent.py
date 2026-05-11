@@ -1,7 +1,7 @@
 """
 weather_agent.py — fetches weather and sends a plain report to Telegram.
-Requires env vars: BOT_TOKEN, CHAT_ID
-Optional: LAT, LON, LOCATION_NAME (defaults to Draper, UT)
+Requires env vars: BOT_TOKEN, CHAT_ID (CHAT_ID only needed for the scheduled push)
+Optional: LAT, LON (defaults to Draper, UT)
 """
 
 import json
@@ -12,11 +12,17 @@ import httpx
 
 # ── Config ────────────────────────────────────────────────────────────────────
 
-BOT_TOKEN        = os.environ["BOT_TOKEN"]
-CHAT_ID          = os.environ["CHAT_ID"]
 LAT              = os.environ.get("LAT", "40.5247")
 LON              = os.environ.get("LON", "-111.8638")
 FICTION_DB_PATH  = os.path.join(os.path.dirname(__file__), "fiction.json")
+
+
+def _require_env(name: str) -> str:
+    val = os.environ.get(name)
+    if not val:
+        print(f"Missing required env var: {name}", file=sys.stderr)
+        sys.exit(1)
+    return val
 
 
 def load_fictional_db(path: str) -> dict:
@@ -71,7 +77,9 @@ WMO_CODES = {
     0: "clear sky", 1: "mainly clear", 2: "partly cloudy", 3: "overcast",
     45: "fog", 48: "icy fog",
     51: "light drizzle", 53: "drizzle", 55: "heavy drizzle",
+    56: "light freezing drizzle", 57: "freezing drizzle",
     61: "light rain", 63: "rain", 65: "heavy rain",
+    66: "light freezing rain", 67: "freezing rain",
     71: "light snow", 73: "snow", 75: "heavy snow", 77: "snow grains",
     80: "light showers", 81: "showers", 82: "violent showers",
     85: "snow showers", 86: "heavy snow showers",
@@ -111,9 +119,10 @@ def format_weather_report(data: dict) -> str:
 # ── Telegram ──────────────────────────────────────────────────────────────────
 
 def send_telegram(text: str, chat_id: str | None = None) -> None:
-    target_chat_id = chat_id or CHAT_ID
+    bot_token = _require_env("BOT_TOKEN")
+    target_chat_id = chat_id or _require_env("CHAT_ID")
     r = httpx.post(
-        f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage",
+        f"https://api.telegram.org/bot{bot_token}/sendMessage",
         json={"chat_id": target_chat_id, "text": text},
         timeout=10,
     )
@@ -128,11 +137,8 @@ def main():
         print(f"Weather fetch failed: {e}", file=sys.stderr)
         sys.exit(1)
 
-    weather_text = format_weather_report(weather_data)
-    print("Weather data:\n" + weather_text)
-    message = weather_text
-
-    print("Sending:", message)
+    message = format_weather_report(weather_data)
+    print(f"Sending:\n{message}")
 
     try:
         send_telegram(message)
