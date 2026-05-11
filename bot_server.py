@@ -1,7 +1,7 @@
 """
-bot_server.py — listens for Telegram messages, responds with weather on demand.
+bot_server.py — listens for Telegram messages and responds with the plain weather report.
 Send any message to your bot to trigger a weather report.
-Requires same env vars as weather_agent.py + PORT (set automatically by Railway).
+Requires BOT_TOKEN + PORT (set automatically by Railway).
 """
 
 import os
@@ -9,7 +9,7 @@ import json
 import threading
 from http.server import BaseHTTPRequestHandler, HTTPServer
 
-from weather_agent import get_weather, format_weather_for_llm, ask_claude, send_telegram
+from weather_agent import get_weather, format_weather_report, send_telegram
 
 PORT = int(os.environ.get("PORT", 8080))
 
@@ -22,21 +22,15 @@ def handle_update(update: dict) -> None:
     except KeyError:
         return  # not a text message, ignore
 
-    # any message triggers a report
+    # any message triggers a plain report
     try:
         weather_data = get_weather()
-        weather_text = format_weather_for_llm(weather_data)
-        message = ask_claude(weather_text)
+        message = format_weather_report(weather_data)
     except Exception as e:
         message = f"something broke: {e}"
 
     try:
-        import httpx
-        httpx.post(
-            f"https://api.telegram.org/bot{os.environ['BOT_TOKEN']}/sendMessage",
-            json={"chat_id": chat_id, "text": message},
-            timeout=10,
-        )
+        send_telegram(message, chat_id=chat_id)
     except Exception as e:
         print(f"Failed to reply: {e}")
 

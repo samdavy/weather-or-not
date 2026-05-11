@@ -1,6 +1,6 @@
 # weather-agent
 
-Sends AI-editorializied weather reports to Telegram 3x/day via GitHub Actions.
+Sends plain formatted weather reports to Telegram 3x/day via GitHub Actions.
 
 ## Setup
 
@@ -28,7 +28,6 @@ Add these secrets:
 |---|---|
 | `BOT_TOKEN` | Your Telegram bot token |
 | `CHAT_ID` | Your Telegram chat ID (the number) |
-| `OPENROUTER_API_KEY` | Your OpenRouter API key (openrouter.ai/keys) |
 
 LAT/LON/LOCATION_NAME are hardcoded to Draper, UT — override with secrets if needed.
 
@@ -50,16 +49,15 @@ Trigger it manually anytime via Actions → Weather Agent → Run workflow.
 Edit `.github/workflows/weather.yml`. Cron times are in UTC.
 Converter: https://dateful.com/time-zone-converter
 
-## Adjusting the personality
+## Behavior
 
-Edit the `SYSTEM_PROMPT` in `weather_agent.py`. Current vibe: terse, world-weary, dry.
+The script sends a plain, formatted weather report without AI editorialization.
 
 ## Running locally
 
 ```bash
 export BOT_TOKEN=...
 export CHAT_ID=...
-export OPENROUTER_API_KEY=...
 # optional overrides — defaults to Draper, UT
 # export LAT=40.5247
 # export LON=-111.8638
